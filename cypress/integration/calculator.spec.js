@@ -18,7 +18,8 @@ describe("Calculator", () => {
 
   })
 
-  it('should arithmetically update the display with the result of the operations', () => {
+  it('should update the display with the arithmetically operation: add', () => {
+
     cy.get('#number2').click();
     cy.get('#operator_add').click()
     cy.get('#number3').click();
@@ -26,7 +27,42 @@ describe("Calculator", () => {
 
     cy.get('.display').should('contain', '5')
 
-  } )
+  })
+
+  it('should update the display with the arithmetically operation: subtract', () => {
+
+    cy.get('#number9').click()
+    cy.get('#operator-subtract').click()
+    cy.get('#number4').click()
+    cy.get('#operator-equals').click()
+
+    cy.get('.display').should('contain', '5')
+
+  })
+
+  it('should update the display with the arithmetically operation: multiply', () => {
+
+    cy.get('#number7').click()
+    cy.get('#operator-multiply').click()
+    cy.get('#number2').click()
+    cy.get('#operator-equals').click()
+
+    cy.get('.display').should('contain', '14')
+
+  })
+
+  it('should update the display with the arithmetically operation: divide', () => {
+
+    cy.get('#number5').click()
+    cy.get('#number0').click()
+    cy.get('#operator-divide').click()
+    cy.get('#number2').click()
+    cy.get('#operator-equals').click()
+
+    cy.get('.display').should('contain', '25')
+    
+
+  })
 
   it('should chain multiple operators together', () => {
 
@@ -41,7 +77,6 @@ describe("Calculator", () => {
 
   })
 
- 
   it('should handle positive calculations', () =>{
 
     cy.get('#number5').click()
@@ -70,6 +105,7 @@ describe("Calculator", () => {
 
   })
 
+
   it('should handle decimal calculations', () =>{
 
     cy.get('#number8').click()
@@ -77,9 +113,11 @@ describe("Calculator", () => {
     cy.get('#number5').click()
     cy.get('#operator-multiply').click()
     cy.get('#number2').click()
+    cy.get('#decimal').click()
+    cy.get('#number5').click()
     cy.get('#operator-equals').click()
 
-    cy.get('.display').should('contain', '17')
+    cy.get('.display').should('contain', '21.25')
 
   })
 
